@@ -3,13 +3,13 @@ from Domain.obiect import creeaza_obiect, getID
 
 def adauga_obiect(ID, nume, descriere, pret_achizitie, locatie, lista):
     """
-    Adauga un obiect intr-o lista.
+    Adauga un obiect intr-o lista
     :param ID: str
     :param nume: str
     :param descriere: str
     :param pret_achizitie: float
     :param locatie: str
-    :return: O lista reprezentand atat elementele vechi, cat si noul obiect.
+    :return: O lista reprezentand atat elementele vechi, cat si noul obiect
     """
 
     obiect = creeaza_obiect(ID, nume, descriere, pret_achizitie, locatie)
