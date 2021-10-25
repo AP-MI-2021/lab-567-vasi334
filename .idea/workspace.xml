@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec9d5cae-d7fd-416e-ac91-cc89baa933b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Domain/obiect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obiect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/testCRUD.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/testCRUD.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
