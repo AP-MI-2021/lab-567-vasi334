@@ -9,13 +9,7 @@ def creeaza_obiect(ID, nume, descriere, pret_achizitie, locatie):
     :return: un dictionar ce contine un obiect
     """
 
-    return {
-        'ID': ID,
-        'nume': nume,
-        'descriere': descriere,
-        'pret_achizitie': pret_achizitie,
-        'locatie': locatie
-    }
+    return [ID, nume, descriere, pret_achizitie, locatie]
 
 
 def getID(obiect):
@@ -24,23 +18,23 @@ def getID(obiect):
     :param obiect: Dictionar ce contine un obiect.
     :return: ID-ul obiectului
     """
-    return obiect['ID']
+    return obiect[0]
 
 
 def getNume(obiect):
-    return obiect['nume']
+    return obiect[1]
 
 
 def getDescriere(obiect):
-    return obiect['descriere']
+    return obiect[2]
 
 
 def getPretAchizitie(obiect):
-    return obiect['pret_achizitie']
+    return obiect[3]
 
 
 def getLocatie(obiect):
-    return obiect['locatie']
+    return obiect[4]
 
 
 def toString(obiect):
