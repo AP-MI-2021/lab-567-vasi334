@@ -5,22 +5,22 @@ from Logic.Functionalitati import mutare_locatie, concatenare_string, determinar
 
 def testSchimbareLocatie():
     lista = []
-    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'raionul 2', lista)
-    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'raionul 3', lista)
-    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'raionul 5', lista)
+    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'rai2', lista)
+    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'rai3', lista)
+    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai5', lista)
 
-    lista = mutare_locatie('raionul 7', lista)
+    lista = mutare_locatie('rai7', lista)
 
-    assert getLocatie(getByID('1', lista)) == 'raionul 7'
-    assert getLocatie(getByID('2', lista)) == 'raionul 7'
-    assert getLocatie(getByID('3', lista)) == 'raionul 7'
+    assert getLocatie(getByID('1', lista)) == 'rai7'
+    assert getLocatie(getByID('2', lista)) == 'rai7'
+    assert getLocatie(getByID('3', lista)) == 'rai7'
 
 
 def testConcatenare():
     lista = []
-    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'raionul 2', lista)
-    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'raionul 3', lista)
-    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'raionul 5', lista)
+    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'rai2', lista)
+    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'rai3', lista)
+    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai5', lista)
 
     lista = concatenare_string(3.7, ' bun', lista)
 
@@ -31,8 +31,8 @@ def testConcatenare():
 
 def testPretMaxim():
     lista = []
-    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'raionul 2', lista)
-    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'raionul 3', lista)
-    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'raionul 3', lista)
+    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'rai2', lista)
+    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'rai3', lista)
+    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai3', lista)
 
-    assert determinare_pret(lista) == {'raionul 2': 4.6, 'raionul 3': 4.0}
+    assert determinare_pret(lista) == {'rai2': 4.6, 'rai3': 4.0}
