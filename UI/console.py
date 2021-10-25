@@ -84,4 +84,4 @@ def runMenu(lista):
         elif optiune == 'x':
             break
         else:
-            print('Optiune gresita. Reincercati: ')
+            print("Optiune gresita. Reincercati: ")
