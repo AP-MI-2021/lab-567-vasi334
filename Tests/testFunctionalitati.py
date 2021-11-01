@@ -1,6 +1,7 @@
-from Domain.obiect import getLocatie, getDescriere
+from Domain.obiect import getLocatie, getDescriere, getID
 from Logic.CRUD import adauga_obiect, getByID
-from Logic.Functionalitati import mutare_locatie, concatenare_string, determinare_pret
+from Logic.Functionalitati import mutare_locatie, concatenare_string, determinare_pret, sortare_dupa_pret, \
+    afisarea_sumelor_locatii
 
 
 def testSchimbareLocatie():
@@ -36,3 +37,28 @@ def testPretMaxim():
     lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai3', lista)
 
     assert determinare_pret(lista) == {'rai2': 4.6, 'rai3': 4.0}
+
+
+def testSortare():
+    lista = []
+    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'rai2', lista)
+    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'rai3', lista)
+    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai3', lista)
+    lista = adauga_obiect('4', 'ciocolata', 'Laura', 2.0, 'rai3', lista)
+
+    lista_ordonata = sortare_dupa_pret(lista)
+
+    assert getID(lista_ordonata[0]) == '4'
+    assert getID(lista_ordonata[1]) == '2'
+    assert getID(lista_ordonata[2]) == '3'
+    assert getID(lista_ordonata[3]) == '1'
+
+
+def testAfisareDupaLocatie():
+    lista = []
+    lista = adauga_obiect('1', 'suc', 'Cola', 4.6, 'rai2', lista)
+    lista = adauga_obiect('2', 'apa', 'Dorna', 3.5, 'rai3', lista)
+    lista = adauga_obiect('3', 'ciocolata', 'Milka', 4.0, 'rai3', lista)
+    lista = adauga_obiect('4', 'ciocolata', 'Laura', 2.0, 'rai3', lista)
+
+    assert afisarea_sumelor_locatii(lista) == {'rai2': 4.6, 'rai3': 9.5}

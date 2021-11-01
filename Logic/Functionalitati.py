@@ -45,3 +45,23 @@ def determinare_pret(lista):
         dictionar_preturi_locatii[f'{locatie}'] = maximum
 
     return dictionar_preturi_locatii
+
+
+def sortare_dupa_pret(lista):
+    lista_sortata = sorted(lista, key=lambda obiect: getPretAchizitie(obiect))
+    return lista_sortata
+
+
+def afisarea_sumelor_locatii(lista):
+    dict_preturi = {}
+    lista_locatii = gasire_locatii(lista)
+
+    for locatie in lista_locatii:
+        suma = 0
+        for obiect in lista:
+            if obiect[4] == locatie:
+                suma += obiect[3]
+
+        dict_preturi[locatie] = suma
+
+    return dict_preturi

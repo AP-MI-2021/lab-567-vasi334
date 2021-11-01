@@ -24,10 +24,14 @@ def testStergeObiect():
     assert getByID('1', lista) is None
     assert getByID('2', lista) is not None
 
-    lista = sterge_obiect('3', lista)
-
-    assert len(lista) == 1
-    assert getByID('2', lista) is not None
+    try:
+        lista = sterge_obiect('3', lista)
+        assert False
+    except ValueError:
+        assert len(lista) == 1
+        assert getByID('2', lista) is not None
+    except Exception:
+        assert False
 
 
 def testModificaObiect():

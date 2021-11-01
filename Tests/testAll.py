@@ -1,6 +1,7 @@
 from Tests.testCRUD import testAdaugaObiect, testStergeObiect
 from Tests.testDomain import test_obiect
-from Tests.testFunctionalitati import testSchimbareLocatie, testConcatenare, testPretMaxim
+from Tests.testFunctionalitati import testSchimbareLocatie, testConcatenare, testPretMaxim, testSortare, \
+    testAfisareDupaLocatie
 
 
 def runAllTests():
@@ -10,3 +11,5 @@ def runAllTests():
     testSchimbareLocatie()
     testConcatenare()
     testPretMaxim()
+    testSortare()
+    testAfisareDupaLocatie()
