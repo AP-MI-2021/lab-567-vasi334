@@ -29,13 +29,13 @@ def menu(lista):
                     comenzi = optiune.split(',')
                     if comenzi[0] == 'Add':
                         try:
-                            lista = adauga_obiect(comenzi[1], comenzi[2], comenzi[3], comenzi[4], comenzi[5], lista)
+                            lista = adauga_obiect(comenzi[1], comenzi[2], comenzi[3], float(comenzi[4]), comenzi[5], lista)
                         except ValueError as ve:
                             print('Eroare: ', ve)
                     elif comenzi[0] == 'ShowAll':
                         show_all(lista)
                     elif comenzi[0] == 'Update':
-                        lista = modificareObiect(comenzi[1], comenzi[2], comenzi[3], comenzi[4], comenzi[5], lista)
+                        lista = modificareObiect(comenzi[1], comenzi[2], comenzi[3], float(comenzi[4]), comenzi[5], lista)
                     elif comenzi[0] == 'Delete':
                         lista = sterge_obiect(comenzi[1], lista)
                     else:
