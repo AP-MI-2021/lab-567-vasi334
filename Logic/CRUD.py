@@ -13,7 +13,7 @@ def adauga_obiect(ID, nume, descriere, pret_achizitie, locatie, lista):
     """
     if getByID(ID, lista) is not None:
         raise ValueError('ID-ul exista deja!')
-    if pret_achizitie < 0:
+    if int(pret_achizitie) < 0:
         raise ValueError('Pretul trebuie sa fie mai mare decat 0 (zero).')
     if nume == '':
         raise ValueError('Numele trebuie sa contina minim un caracter.')
@@ -39,7 +39,7 @@ def sterge_obiect(ID, lista):
 def modificareObiect(ID, nume, descriere, pret_achizitie, locatie, lista):
     if getByID(ID, lista) is None:
         raise ValueError('Nu exista un obiect cu ID-ul dat!')
-    if pret_achizitie < 0:
+    if int(pret_achizitie) < 0:
         raise ValueError('Pretul trebuie sa fie mai mare decat 0 (zero).')
     if nume == '':
         raise ValueError('Numele trebuie sa contina minim un caracter.')

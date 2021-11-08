@@ -19,37 +19,47 @@ def printMenu():
     print("x. Iesire")
 
 
-def uiAdaugaObiect(lista):
+def uiAdaugaObiect(lista, undoList, redoList):
     try:
         ID = input('Dati ID-ul: ')
         nume = input('Dati numele: ')
         descriere = input('Dati descrierea: ')
         pret_achizitie = input('Dati pretul de achizitie: ')
         locatie = input('Dati locatia: ')
-        return adauga_obiect(ID, nume, descriere, pret_achizitie, locatie, lista)
+
+        rez = adauga_obiect(ID, nume, descriere, pret_achizitie, locatie, lista)
+        undoList.append(lista)
+        redoList.clear()
+        return rez
     except ValueError as ve:
         print("Eroare:", ve)
         return lista
 
 
 
-def uiStergeObiect(lista):
+def uiStergeObiect(lista, undoList, redoList):
     try:
         ID = input('Dati ID-ul pentru a sterge obiectul: ')
-        return sterge_obiect(ID, lista)
+        rez =  sterge_obiect(ID, lista)
+        undoList.append(lista)
+        redoList.clear()
+        return rez
     except ValueError as ve:
         print("Eroare:", ve)
         return lista
 
 
-def uiModificaObiect(lista):
+def uiModificaObiect(lista, undoList, redoList):
     try:
         ID = input('Dati ID-ul pentru a modifica obiectul: ')
         nume = input('Dati numele pentru a modifica obiectul: ')
         descriere = input('Dati descrierea pentru a modifica obiectul: ')
         pret_achizitie = input('Dati pretul de achizitie pentru a modifica obiectul: ')
         locatie = input('Dati locatia pentru a modifica obiectul: ')
-        return modificareObiect(ID, nume, descriere, pret_achizitie, locatie, lista)
+        rez = modificareObiect(ID, nume, descriere, pret_achizitie, locatie, lista)
+        undoList.append(lista)
+        redoList.clear()
+        return rez
     except ValueError as ve:
         print("Eroare:", ve)
         return lista
@@ -60,10 +70,13 @@ def showAll(lista):
         print(toString(obiect))
 
 
-def uiSchimbaLocatie(lista):
+def uiSchimbaLocatie(lista, undoList, redoList):
     try:
         locatie = input('Dati locatia noua: ')
-        return mutare_locatie(locatie, lista)
+        rez = mutare_locatie(locatie, lista)
+        undoList.append(lista)
+        redoList.clear()
+        return rez
     except ValueError as ve:
         print("Eroare:", ve)
         return lista
@@ -97,19 +110,20 @@ def uiPretDupaLocatie(lista):
 
 def runMenu(lista):
     temp = 0
-
+    undoList = []
+    redoList = []
     while True:
         printMenu()
         optiune = input("Dati optiunea: ")
 
         if optiune == '1':
-            lista = uiAdaugaObiect(lista)
+            lista = uiAdaugaObiect(lista, undoList, redoList)
         elif optiune == '2':
-            lista = uiStergeObiect(lista)
+            lista = uiStergeObiect(lista, undoList, redoList)
         elif optiune == '3':
-            lista = uiModificaObiect(lista)
+            lista = uiModificaObiect(lista, undoList, redoList)
         elif optiune == '4':
-            lista = uiSchimbaLocatie(lista)
+            lista = uiSchimbaLocatie(lista, undoList, redoList)
         elif optiune == '5':
             lista = uiConcatenare(lista)
         elif optiune == '6':
@@ -119,13 +133,17 @@ def runMenu(lista):
         elif optiune == '8':
             print(uiPretDupaLocatie(lista))
         elif optiune == '9': #Undo
-            if temp == 0:
-                element_sters = lista.pop()
-                temp += 1
+            if len(undoList) > 0:
+                redoList.append(lista)
+                lista = undoList.pop()
+            else:
+                print("Nu se poate face undo!")
         elif optiune == '10': #Redo
-            if temp > 0:
-                lista.append(element_sters)
-                temp -= 1
+            if len(undoList) > 0:
+                undoList.append(lista)
+                lista = redoList.pop()
+            else:
+                print("Nu se poate face redo!")
         elif optiune == 'a':
             showAll(lista)
         elif optiune == 'x':
