@@ -82,11 +82,14 @@ def uiSchimbaLocatie(lista, undoList, redoList):
         return lista
 
 
-def uiConcatenare(lista):
+def uiConcatenare(lista, undoList, redoList):
     try:
         valoare = input('Dati valoarea: ')
         stringul = input('Dati string-ul: ')
-        return concatenare_string(valoare, stringul, lista)
+        rez = concatenare_string(valoare, stringul, lista)
+        undoList.append(lista)
+        redoList.clear()
+        return rez
     except ValueError as ve:
         print("Eroare:", ve)
         return lista
@@ -125,7 +128,7 @@ def runMenu(lista):
         elif optiune == '4':
             lista = uiSchimbaLocatie(lista, undoList, redoList)
         elif optiune == '5':
-            lista = uiConcatenare(lista)
+            lista = uiConcatenare(lista, undoList, redoList)
         elif optiune == '6':
             print(uiPretMaxim(lista))
         elif optiune == '7':
@@ -139,7 +142,7 @@ def runMenu(lista):
             else:
                 print("Nu se poate face undo!")
         elif optiune == '10': #Redo
-            if len(undoList) > 0:
+            if len(redoList) > 0:
                 undoList.append(lista)
                 lista = redoList.pop()
             else:
