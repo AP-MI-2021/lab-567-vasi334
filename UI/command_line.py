@@ -19,7 +19,7 @@ def meniu_help():
 
 
 def menu(lista):
-    print("Note: if you need help, type 'Help'.")
+    print("Nota: daca ai nevoie de ajutor, scrie 'Help'.")
     while True:
         optiune = input()
         if optiune == 'Help':

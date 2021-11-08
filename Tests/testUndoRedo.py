@@ -1,5 +1,6 @@
 from Domain.obiect import getID
 from Logic.CRUD import adauga_obiect
+
 # start program
 
 
